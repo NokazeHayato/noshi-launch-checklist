@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WordPress Launch Checklist — 25 Things to Verify Before Going Live</title>
+  <meta name="description" content="A 25-point WordPress launch checklist: content, SEO, security, cleanup, and client handoff — whether you coded it yourself or built it with AI.">
+  <link rel="canonical" href="https://nokazehayato.github.io/noshi-launch-checklist/">
+  <meta property="og:title" content="WordPress Launch Checklist — 25 Things to Verify Before Going Live">
+  <meta property="og:description" content="A 25-point WordPress launch checklist: content, SEO, security, cleanup, and client handoff — whether you coded it yourself or built it with AI.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://nokazehayato.github.io/noshi-launch-checklist/">
+  <meta property="og:image" content="https://nokazehayato.github.io/noshi-launch-checklist/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WordPress Launch Checklist — 25 Things to Verify Before Going Live">
+  <meta name="twitter:description" content="A 25-point WordPress launch checklist: content, SEO, security, cleanup, and client handoff — whether you coded it yourself or built it with AI.">
+  <meta name="twitter:image" content="https://nokazehayato.github.io/noshi-launch-checklist/assets/og-image.png">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "WordPress Launch Checklist — 25 Things to Verify Before You Push a Site Live (Whether You Coded It or an AI Did)",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Delete test posts, dummy pages, and \"Hello World\" leftovers.",
+        "text": "Every WordPress install starts with sample content, and most builds generate more of it along the way. Search your post list for \"test\", \"sample\", and \"hello\" before you call it done.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-1"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Hunt down Lorem Ipsum and placeholder text.",
+        "text": "It hides in footers, image captions, and that one tab nobody clicks. A site-wide search for \"lorem\" takes ten seconds and has saved more reputations than any plugin.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-2"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Check menus and footers for links to draft or dead pages.",
+        "text": "A menu item pointing at a draft returns a 404 for everyone who isn't logged in — and you're always logged in, so you'll never see it yourself.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-3"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Verify your 404 page actually helps visitors.",
+        "text": "Someone will hit it eventually. Make sure it offers a way back — search box, home link, anything but a dead end.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-4"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Proofread the pages people actually read first.",
+        "text": "Home, contact, and legal pages get the most eyes and the least review. Read them out loud once; your ear catches what your eye skips.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-5"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Turn OFF \"Discourage search engines from indexing this site.\"",
+        "text": "Settings → Reading. This is the checkbox from the intro — the one that quietly keeps Google away. Every staging site has it on; every live site must have it off.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-6"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Confirm robots.txt isn't blocking what it shouldn't.",
+        "text": "Visit yoursite.com/robots.txt and read it. If a staging rule survived the migration, this is where it hides.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-7"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Submit your sitemap to Google Search Console.",
+        "text": "Indexing happens eventually without it — but \"eventually\" is a painful word when a client asks why they can't find their own site.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-8"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Set human-readable permalinks — then flush rewrite rules.",
+        "text": "Settings → Permalinks. If you changed structures during the build, flush the rules so old cached routes don't 404.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-9"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Write meta titles and descriptions for key pages.",
+        "text": "At minimum: home, main service or product pages, and contact. These are the words Google shows strangers before they decide whether to visit.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-10"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Rename or replace the default admin username.",
+        "text": "It's half of every credential pair a bot will try. Create a new administrator with a unique name, log in as it, delete the old one, and reassign content.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-11"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Point the admin email somewhere the client actually reads.",
+        "text": "Settings → General. Password resets, security notices, and update failures all go there. An unread inbox is a silent alarm.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-12"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Turn off WP_DEBUG before anyone sees your errors.",
+        "text": "In wp-config.php, set WP_DEBUG to false. Error messages on a live site hand attackers file paths and version numbers for free.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-13"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Remove debug.log from the server.",
+        "text": "Turning debugging off doesn't delete the log it already wrote. Check /wp-content/debug.log — remember, scanners check it too.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-14"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Set DISALLOW_FILE_EDIT to lock the built-in code editor.",
+        "text": "One line in wp-config.php removes the theme/plugin editor from the dashboard — the first tool an intruder reaches for after a stolen login.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-15"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Close XML-RPC if nothing uses it.",
+        "text": "It's a legacy remote-access door that most modern sites never need, and it happily processes thousands of login attempts in batches.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-16"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Delete leftover accounts and enforce strong passwords.",
+        "text": "Remove the migration user, the \"temp\" account, the developer login from three contractors ago. Enable two-factor authentication for every administrator who remains.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-17"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Deactivate AND delete plugins and themes you don't use.",
+        "text": "Deactivated plugins still ship exploitable code to your server. If you're not using it, it shouldn't be there.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-18"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Clear out unused media files.",
+        "text": "Test uploads, rejected drafts, five sizes of a logo you replaced in week two. They bloat backups and slow migrations forever.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-19"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Check every remaining plugin still receives updates.",
+        "text": "A plugin that hasn't been updated in years is a door nobody's guarding. Check the \"last updated\" date on each one before you hand the keys over.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-20"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Turn on caching and compress your images.",
+        "text": "The fastest support ticket to prevent is \"the site feels slow.\" A caching plugin and compressed images cover most of it.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-21"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Take a full backup — and prove the restore works.",
+        "text": "A backup you've never restored is a hope, not a backup. Do one full cycle before handoff day.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-22"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Hand over credentials securely.",
+        "text": "No passwords in email threads. Use a password manager's sharing feature or a one-time secret link, and change anything that was shared insecurely during the build.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-23"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Document what you built and who owns which license.",
+        "text": "Which plugins are premium? Whose account renews them? Where's the hosting billed? Six months from now, this one page will answer every panicked call.",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-24"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Keep evidence that you checked all of the above.",
+        "text": "A dated record of what you verified protects both sides: the client knows the work was done, and you have proof it was done when questions come later. This is the step almost everyone skips — and the one that turns a launch from \"I think it's fine\" into \"here's what we checked.\"",
+        "url": "https://nokazehayato.github.io/noshi-launch-checklist/#check-25"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to checklist</a>
+  <header class="site-header">
+    <div class="brand-bar">
+      <div class="container brand-bar-inner">
+        <a class="brand" href="https://wordpress.org/plugins/noshi-kanamer/">
+          <img src="assets/noshi-kanamer-icon.png" alt="" width="36" height="36">
+          <span class="brand-name">WordPress Noshi-Kanamer Plugin</span>
+        </a>
+        <span class="brand-byline">by <a href="https://dev.to/nokazehayato">nokazehayato</a></span>
+      </div>
+    </div>
+    <div class="container hero">
+      <p class="eyebrow">WordPress pre-launch checklist</p>
+      <h1>WordPress Launch Checklist — 25 Things to Verify Before You Push a Site Live (Whether You Coded It or an AI Did)</h1>
+      <div class="intro">
+        <p>A brand-new WordPress site went live two weeks ago. Google still hasn't indexed a single page. Someone forgot to uncheck "Discourage search engines from indexing this site" after the redesign. One checkbox. It happens so often there are entire tutorials devoted to recovering from it.</p>
+        <p>Sometimes the mistake is simpler: <code>debug.log</code> sits in <code>/wp-content/</code>, publicly downloadable, quietly collecting database errors and file paths. Automated scanners probe that exact URL on every WordPress site they find, and a simple search still turns up thousands of live logs.</p>
+        <p>Other times it's a clock nobody notices start ticking. The moment a site goes live, its SSL certificate lands in a public transparency log that bots watch around the clock, and most new domains get discovered within hours. If the admin username is still <code>admin</code>, the attacker already knows half the login before trying a single password, so the attempts against <code>wp-login.php</code> hit five figures by morning.</p>
+        <p>And the newest version of this story skips WordPress entirely. A founder ships a site built entirely with AI, no hand-written code, and announces it proudly. Two days later he's posting "guys, I'm under attack": API keys exposed in the client-side code, paywall bypassed, and a five-figure API bill by morning. Not WordPress, but the lesson transfers cleanly.</p>
+        <p>These aren't rare edge cases. They're the same handful of failures repeating across freelancers, agencies, and now AI-assisted builders, because at the end of a long build nobody has the energy to reconstruct a checklist from scratch. So here it is, reconstructed for you: 25 checks, ordered the way you'd actually do them, with the tedious ones automated at the end.</p>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <nav class="toc" aria-labelledby="toc-heading">
+      <h2 id="toc-heading">Table of Contents</h2>
+      <ol class="toc-sections">
+        <li><a href="#content-editorial">Content &amp; Editorial</a> (checks 1–5)</li>
+        <li><a href="#seo-discoverability">SEO &amp; Discoverability</a> (checks 6–10)</li>
+        <li><a href="#security-access-control">Security &amp; Access Control</a> (checks 11–17)</li>
+        <li><a href="#performance-cleanup">Performance &amp; Cleanup</a> (checks 18–21)</li>
+        <li><a href="#client-handoff-documentation">Client Handoff &amp; Documentation</a> (checks 22–25)</li>
+        <li><a href="#if-you-built-this-with-ai">If You Built This With AI, You Need to Read This Twice</a></li>
+        <li><a href="#automate-the-boring-parts">Automate the Boring Parts — Noshi-Kanamer</a></li>
+        <li><a href="#how-to-install">How to Install (Zero-Friction Path)</a></li>
+        <li><a href="#coming-soon">Coming Soon — AI Site Safety Report (Pro)</a></li>
+      </ol>
+    </nav>
+
+    <section id="content-editorial">
+      <h2>Section 1: Content &amp; Editorial</h2>
+      <p>Before anything technical, walk the site the way a first-time visitor would.</p>
+      <figure class="section-illustration">
+        <img src="assets/section-1.jpg" alt="Illustration of cleaning up dummy content, checking a 404 page, and fixing broken links before launch" loading="lazy" width="1200" height="675">
+      </figure>
+      <article class="check-item">
+        <h3 id="check-1">1. Delete test posts, dummy pages, and "Hello World" leftovers.</h3>
+        <p>Every WordPress install starts with sample content, and most builds generate more of it along the way. Search your post list for "test", "sample", and "hello" before you call it done.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-2">2. Hunt down Lorem Ipsum and placeholder text.</h3>
+        <p>It hides in footers, image captions, and that one tab nobody clicks. A site-wide search for "lorem" takes ten seconds and has saved more reputations than any plugin.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-3">3. Check menus and footers for links to draft or dead pages.</h3>
+        <p>A menu item pointing at a draft returns a 404 for everyone who isn't logged in — and you're always logged in, so you'll never see it yourself.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-4">4. Verify your 404 page actually helps visitors.</h3>
+        <p>Someone will hit it eventually. Make sure it offers a way back — search box, home link, anything but a dead end.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-5">5. Proofread the pages people actually read first.</h3>
+        <p>Home, contact, and legal pages get the most eyes and the least review. Read them out loud once; your ear catches what your eye skips.</p>
+      </article>
+    </section>
+
+    <section id="seo-discoverability">
+      <h2>Section 2: SEO &amp; Discoverability</h2>
+      <p>The most expensive launch mistakes are the invisible ones.</p>
+      <figure class="section-illustration">
+        <img src="assets/section-2.jpg" alt="Illustration of turning on search visibility, checking robots.txt, submitting a sitemap, and writing meta titles" loading="lazy" width="1200" height="675">
+      </figure>
+      <article class="check-item">
+        <h3 id="check-6">6. Turn OFF "Discourage search engines from indexing this site."</h3>
+        <p>Settings → Reading. This is the checkbox from the intro — the one that quietly keeps Google away. Every staging site has it on; every live site must have it off.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-7">7. Confirm robots.txt isn't blocking what it shouldn't.</h3>
+        <p>Visit <code>yoursite.com/robots.txt</code> and read it. If a staging rule survived the migration, this is where it hides.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-8">8. Submit your sitemap to Google Search Console.</h3>
+        <p>Indexing happens eventually without it — but "eventually" is a painful word when a client asks why they can't find their own site.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-9">9. Set human-readable permalinks — then flush rewrite rules.</h3>
+        <p>Settings → Permalinks. If you changed structures during the build, flush the rules so old cached routes don't 404.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-10">10. Write meta titles and descriptions for key pages.</h3>
+        <p>At minimum: home, main service or product pages, and contact. These are the words Google shows strangers before they decide whether to visit.</p>
+      </article>
+    </section>
+
+    <section id="security-access-control">
+      <h2>Section 3: Security &amp; Access Control</h2>
+      <p>Bots don't wait for your launch party. They found your site the day DNS propagated.</p>
+      <figure class="section-illustration">
+        <img src="assets/section-3.jpg" alt="Illustration of WordPress security steps: renaming the admin user, securing the admin email, disabling debug mode, and enforcing strong passwords" loading="lazy" width="1200" height="675">
+      </figure>
+      <article class="check-item">
+        <h3 id="check-11">11. Rename or replace the default <code>admin</code> username.</h3>
+        <p>It's half of every credential pair a bot will try. Create a new administrator with a unique name, log in as it, delete the old one, and reassign content.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-12">12. Point the admin email somewhere the client actually reads.</h3>
+        <p>Settings → General. Password resets, security notices, and update failures all go there. An unread inbox is a silent alarm.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-13">13. Turn off WP_DEBUG before anyone sees your errors.</h3>
+        <p>In <code>wp-config.php</code>, set <code>WP_DEBUG</code> to <code>false</code>. Error messages on a live site hand attackers file paths and version numbers for free.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-14">14. Remove debug.log from the server.</h3>
+        <p>Turning debugging off doesn't delete the log it already wrote. Check <code>/wp-content/debug.log</code> — remember, scanners check it too.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-15">15. Set DISALLOW_FILE_EDIT to lock the built-in code editor.</h3>
+        <p>One line in <code>wp-config.php</code> removes the theme/plugin editor from the dashboard — the first tool an intruder reaches for after a stolen login.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-16">16. Close XML-RPC if nothing uses it.</h3>
+        <p>It's a legacy remote-access door that most modern sites never need, and it happily processes thousands of login attempts in batches.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-17">17. Delete leftover accounts and enforce strong passwords.</h3>
+        <p>Remove the migration user, the "temp" account, the developer login from three contractors ago. Enable two-factor authentication for every administrator who remains.</p>
+      </article>
+    </section>
+
+    <section id="performance-cleanup">
+      <h2>Section 4: Performance &amp; Cleanup</h2>
+      <p>Launch day is the last time cleanup is cheap. After launch, everything you left behind becomes "don't touch it, it might break something."</p>
+      <figure class="section-illustration">
+        <img src="assets/section-4.jpg" alt="Illustration of removing unused plugins and media, checking for outdated plugins, and enabling caching" loading="lazy" width="1200" height="675">
+      </figure>
+      <article class="check-item">
+        <h3 id="check-18">18. Deactivate AND delete plugins and themes you don't use.</h3>
+        <p>Deactivated plugins still ship exploitable code to your server. If you're not using it, it shouldn't be there.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-19">19. Clear out unused media files.</h3>
+        <p>Test uploads, rejected drafts, five sizes of a logo you replaced in week two. They bloat backups and slow migrations forever.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-20">20. Check every remaining plugin still receives updates.</h3>
+        <p>A plugin that hasn't been updated in years is a door nobody's guarding. Check the "last updated" date on each one before you hand the keys over.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-21">21. Turn on caching and compress your images.</h3>
+        <p>The fastest support ticket to prevent is "the site feels slow." A caching plugin and compressed images cover most of it.</p>
+      </article>
+    </section>
+
+    <section id="client-handoff-documentation">
+      <h2>Section 5: Client Handoff &amp; Documentation</h2>
+      <p>The launch isn't finished when the site works. It's finished when someone else can run it.</p>
+      <figure class="section-illustration">
+        <img src="assets/section-5.jpg" alt="Illustration of a verified backup, secure credential handoff, license documentation, and a completed proof-of-work report" loading="lazy" width="1200" height="675">
+      </figure>
+      <article class="check-item">
+        <h3 id="check-22">22. Take a full backup — and prove the restore works.</h3>
+        <p>A backup you've never restored is a hope, not a backup. Do one full cycle before handoff day.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-23">23. Hand over credentials securely.</h3>
+        <p>No passwords in email threads. Use a password manager's sharing feature or a one-time secret link, and change anything that was shared insecurely during the build.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-24">24. Document what you built and who owns which license.</h3>
+        <p>Which plugins are premium? Whose account renews them? Where's the hosting billed? Six months from now, this one page will answer every panicked call.</p>
+      </article>
+      <article class="check-item">
+        <h3 id="check-25">25. Keep evidence that you checked all of the above.</h3>
+        <p>A dated record of what you verified protects both sides: the client knows the work was done, and you have proof it was done when questions come later. This is the step almost everyone skips — and the one that turns a launch from "I think it's fine" into "here's what we checked."</p>
+      </article>
+    </section>
+
+    <section id="if-you-built-this-with-ai">
+      <h2>Section 6: If You Built This With AI, You Need to Read This Twice</h2>
+      <p>Let's be clear first: modern AI site builders and coding assistants are genuinely remarkable. If AI helped you ship a site that looks professional and works, that's not something to apologize for. Five years ago, the same result took a team.</p>
+      <figure class="section-illustration">
+        <img src="assets/section-6.jpg" alt="Illustration of launch-safety items hidden below the surface of a polished, AI-generated website" loading="lazy" width="1200" height="675">
+      </figure>
+      <p>But there's a structural blind spot, and it's not the AI's fault: <strong>AI does what you ask. Launch safety is made of things nobody asks for.</strong></p>
+      <p>Nobody prompts "change the default admin username." Nobody prompts "make sure debug logging is off in production," or "lock the file editor," or "close XML-RPC." These aren't features. They're the absence of problems, so they produce no visible change on the page, so they never make it into a prompt, so they never happen. An industry study found nearly half of AI-generated code samples contained security weaknesses, not because the AI is careless, but because safety constraints weren't in the request.</p>
+      <p>If your site came from an AI builder or a vibe-coding session, the checklist above isn't optional reading. Items 6, 11, 13, 14, 15, and 16 are precisely the invisible ones. Go through them once. It costs twenty minutes, most of it copy-paste.</p>
+      <p>And if you'd rather have a machine double-check the machine, that's fair. It's what the next section is for.</p>
+      <p><em>Modern AI site builders are remarkable at generating pages. They're not designed to know what your site should look like on launch day. That's what this checklist, and Noshi-Kanamer, is for.</em></p>
+    </section>
+
+    <section id="automate-the-boring-parts">
+      <h2>Section 7: Automate the Boring Parts — Noshi-Kanamer</h2>
+      <p>Twelve of the twenty-five checks above get a hand from Noshi-Kanamer.</p>
+      <p><a href="https://wordpress.org/plugins/noshi-kanamer/">Noshi-Kanamer</a> is a free WordPress plugin that runs the mechanical half of this checklist for you. Install it, open the Pre-Launch tab, and it automatically detects:</p>
+      <ul>
+        <li>Search engine visibility still discouraged (item 6)</li>
+        <li>Default <code>admin</code> username (item 11)</li>
+        <li>Admin email pointing nowhere useful (item 12)</li>
+        <li><code>WP_DEBUG</code> left on (item 13)</li>
+        <li><code>debug.log</code> present on the server (item 14), with one-click deletion</li>
+        <li><code>DISALLOW_FILE_EDIT</code> not set (item 15)</li>
+        <li>XML-RPC left open (item 16)</li>
+      </ul>
+      <p>It also handles the cleanup actions: bulk-delete its own test posts (item 1), flush rewrite rules (item 9), and find unused media (item 19). The Site Check tab flags plugins that haven't seen an update in years, giving you a head start on item 20.</p>
+      <p>And for item 25, the evidence, there's <strong>Generate Report</strong>: a plain-text summary of every check and its result, dated, ready to paste into a handoff email or archive with the project. You don't need to know PHP or wp-config.php. Noshi-Kanamer checks all 7 items automatically and prints a report you can save.</p>
+      <figure class="screenshot">
+        <img src="assets/noshi-kanamer-prelaunch-complete.png" alt="Noshi-Kanamer's Pre-Launch tab showing all checks passed and a Ready to Launch banner" loading="lazy" width="1280" height="720">
+        <figcaption>The Pre-Launch tab after every check clears, with Generate Report ready to export.</figcaption>
+      </figure>
+      <p>The other thirteen are the ones no plugin can do for you: writing a meta description, proofreading a page, deciding whether a permalink reads well. That's not a gap. It's just what's left once the mechanical checks are handled. Server-side detection and writing judgment are different jobs, and this page still needs you for the second one.</p>
+    </section>
+
+    <section id="how-to-install">
+      <h2>Section 8: How to Install (Zero-Friction Path)</h2>
+      <p>From your WordPress dashboard: <strong>Plugins → Add New → search "noshi" → Install → Activate.</strong> That's the whole thing — under a minute, no files to move.</p>
+      <figure class="section-illustration">
+        <img src="assets/section-8.png" alt="Screenshot of the WordPress Add Plugins search results showing the Noshi-Kanamer plugin" loading="lazy" width="1327" height="436">
+      </figure>
+      <p>(You can also download the zip from the <a href="https://wordpress.org/plugins/noshi-kanamer/">plugin page</a> and drop it into <code>wp-content/plugins/</code> if that's your style — but the search box above is almost certainly faster.)</p>
+      <p>Once activated, look for <strong>Noshi-Kanamer</strong> in your sidebar and open the <strong>Pre-Launch</strong> tab.</p>
+    </section>
+
+    <section id="coming-soon">
+      <h2>Section 9: Coming Soon — AI Site Safety Report (Pro)</h2>
+      <p>Working with agencies and AI-assisted developers, I keep hearing the same request: "Can I hand this report to my client on their letterhead, in PDF, as formal proof of QA?" Or, quieter: "Can I save this somewhere, so if anything ever happens, I have proof I checked?"</p>
+      <p>That's what I'm building next: <strong>AI Site Safety Report — Client Handoff Edition.</strong> Branded PDF export, per-item pass/fail notes, a signature line, and (for AI-assisted builds) a plain-language "what was checked and why it matters" summary you can hand to a non-technical stakeholder.</p>
+      <p>Planned as a <strong>one-time $19 purchase</strong>: no subscription, use it on every launch, expense it to a project.</p>
+      <p>If that would save you an hour on your next handoff, or just buy you a night of better sleep, leave your email below and I'll write to you once when it ships. No drip campaign, no newsletter, just the release note.</p>
+      <div class="form-placeholder" aria-label="AI Site Safety Report waitlist form placeholder">
+        <!-- TALLY_FORM_START: フォームIDは発注者側で差し替え -->
+        <iframe data-tally-src="https://tally.so/embed/TALLY_FORM_ID?alignLeft=1&hideTitle=1&transparentBackground=1"
+                loading="lazy" width="100%" height="400" frameborder="0" title="AI Site Safety Report waitlist"></iframe>
+        <script async src="https://tally.so/widgets/embed.js"></script>
+        <!-- TALLY_FORM_END -->
+      </div>
+    </section>
+
+    <section id="about-feedback">
+      <h2>Outro: About &amp; Feedback</h2>
+      <p>This checklist is maintained by the developer of Noshi-Kanamer and updated as WordPress evolves. Found a check that should be here? Tell me — the whole point is that nobody should have to rebuild this list from scratch again. This page pairs with my <a href="https://dev.to/nokazehayato/wordpress-pre-launch-checklist-for-client-handoff-what-to-check-clean-up-and-prove-before-5ejd">pre-launch checklist article on dev.to</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Maintained by the developer of Noshi-Kanamer.</p>
+    </div>
+  </footer>
+  <a class="cta-float" href="#coming-soon">Join the Pro waitlist</a>
+  <!-- ANALYTICS_SNIPPET_HERE (Cloudflare Web Analytics beacon・発注者側で差し込み) -->
+</body>
+</html>

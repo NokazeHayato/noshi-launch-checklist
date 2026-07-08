@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nokazehayato.github.io/noshi-launch-checklist/sitemap.xml
