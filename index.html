@@ -176,6 +176,46 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What should I check before launching a WordPress site built with AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The same core checks as any WordPress launch — noindex, WP_DEBUG, test content, debug.log — plus extra attention to the security defaults AI builders rarely touch, like the default admin username and XML-RPC. AI does what you ask; launch safety is made of the things nobody thinks to ask for."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I check before launching a WordPress site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Walk through content cleanup (test posts, placeholder text, broken links), SEO basics (search engine visibility, robots.txt, sitemap, meta titles), security defaults (admin username, admin email, WP_DEBUG, debug.log, file editor lock, XML-RPC), performance and cleanup (unused plugins and media), and client handoff documentation (backup, credentials, license records, proof you checked everything). See the 25-point checklist above for the full list."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a WordPress plugin that checks for leftover debug settings before launch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — Noshi-Kanamer's Pre-Launch tab automatically detects whether WP_DEBUG is left on, whether a debug.log file is present on the server (with one-click deletion), and other launch-safety defaults like noindex, the file editor lock, and XML-RPC, then generates a shareable proof report of every check."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find unused media files before handing off a WordPress site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Noshi-Kanamer's Media Manager tab scans your media library and flags images not referenced in post content, featured images, or custom fields (including ACF image and gallery fields), then lets you bulk-delete the unused ones in one pass before client handoff."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to checklist</a>
@@ -360,6 +400,8 @@
 
     <section id="if-you-built-this-with-ai">
       <h2>Section 6: If You Built This With AI, You Need to Read This Twice</h2>
+      <h3 id="ai-launch-question">What should I check before launching a WordPress site built with AI?</h3>
+      <p><strong>Short answer:</strong> the same checks as any WordPress launch — noindex, WP_DEBUG, test content, debug.log — plus extra attention to the security defaults AI builders rarely touch, like the default admin username and XML-RPC. AI does what you ask; launch safety is made of the things nobody thinks to ask for.</p>
       <p>Let's be clear first: modern AI site builders and coding assistants are genuinely remarkable. If AI helped you ship a site that looks professional and works, that's not something to apologize for. Five years ago, the same result took a team.</p>
       <figure class="section-illustration">
         <img src="assets/section-6.jpg" alt="Illustration of launch-safety items hidden below the surface of a polished, AI-generated website" loading="lazy" width="1200" height="675">
